@@ -13,8 +13,10 @@ public class Cuentas {
 
     public ArrayList<Grupo> getCuentas(){
         ArrayList<Grupo>cuentas=new ArrayList<>();
-        cuentas.add(new Grupo(documento.getDocumento().get(0)));
-        Grupo grupoActual=cuentas.get(0);
+        Grupo grupoActual;
+        try {
+            cuentas.add(new Grupo(documento.getDocumento().get(0)));
+            grupoActual=cuentas.get(0);
         for (int i=1;i<documento.getDocumento().size();i++) {
             boolean nuevoGrupo=false;
             try{
@@ -29,8 +31,10 @@ public class Cuentas {
                 grupoActual.anadirALaCuenta(Integer.parseInt(documento.getDocumento().get(i).trim()));
             }
             }
-
+        }catch (RuntimeException re){
+        }
         return cuentas;
+
     }
 
     public String mostrarCuentas(){
