@@ -43,7 +43,7 @@ public class Usuario implements Comparable<Usuario>{
 
     @Override
     public String toString(){
-        return"";
+        return nombreReal+" "+nombre+" "+contraseña;
     }
 
 
@@ -51,4 +51,6 @@ public class Usuario implements Comparable<Usuario>{
     public int compareTo(Usuario o) {
         return this.nombre.compareTo(o.nombre);
     }
+
+
 }

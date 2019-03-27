@@ -79,20 +79,16 @@ class PanelPropio{
     private static boolean valida(String expresion) {
         Deque<Character> pila = new LinkedList<>();
         Caracteres caracteres=new Caracteres("Caracteres.txt");
-        Character ultimoMetido=' ';
         for(int i=0;i<expresion.length();i++){
             if(caracteres.getCaracteres().containsKey(expresion.charAt(i))){
-                pila.push(caracteres.getCaracteres().get(expresion.charAt(i)));
-                ultimoMetido=pila.getFirst();
+                pila.push(expresion.charAt(i));
 
 
             }else if(caracteres.getCaracteres().containsValue(expresion.charAt(i))){
                 try {
-                    if(ultimoMetido==expresion.charAt(i)){
+                    if(caracteres.getCaracteres().get(pila.getFirst())==expresion.charAt(i)) {
                         pila.pop();
-                        ultimoMetido=pila.getFirst();
-                        return true;
-                    }else{return false;}
+                    }
 
                 }catch (NoSuchElementException nsee){
                     return false;
